@@ -13,18 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM alpine:3.23.4
-
-# Create a working directory
-WORKDIR /opt/mdx/
-
-# Copy the init scripts into the working directory
-COPY ./elk/elasticsearch/init-scripts ./init-scripts
-
-# Make scripts executable
-RUN chmod +x ./init-scripts/*.sh
-
-# Install bash and curl commands.
-RUN apk update && apk add bash
-
-RUN apk --no-cache add curl
+- pipeline.id: mdx-kafka
+  path.config: "/usr/share/logstash/pipelines/mdx-logstash.conf"
